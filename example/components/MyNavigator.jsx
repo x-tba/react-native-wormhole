@@ -23,13 +23,42 @@ const { Wormhole } = createWormhole({
   verify: async () => true,
 });
 
+const useComponentSize = () => {
+  const [size, setSize] = React.useState(null);
+
+  const onLayout = React.useCallback((event) => {
+    const { width, height } = event.nativeEvent.layout;
+    setSize({ width, height });
+  }, []);
+
+  return [size, onLayout];
+};
+
 function HomeScreen() {
+  const [size, onLayout] = useComponentSize();
+  console.log(
+    "🚀 ~ file: MyNavigator.jsx:39 ~ HomeScreen ~ size, onLayout:",
+    size,
+    onLayout
+  );
+
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Home!</Text>
-      <Wormhole
-        source={{ uri: "http://192.168.1.5:3000/component/MyTable.jsx" }}
-      />
+    <View
+      onLayout={onLayout}
+      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+    >
+      <Text onLayout={onLayout}>Home!</Text>
+      <View
+        onLayout={onLayout}
+        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      >
+        <Text onLayout={onLayout}>
+          Home 2 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          Commodi rerum quasi excepturi consectetur, aliquid eveniet provident
+          expedita magnam, dignissimos, repudiandae minima non error eligendi
+          quaerat earum debitis minus. Sunt, vero!!
+        </Text>
+      </View>
     </View>
   );
 }
@@ -38,6 +67,9 @@ function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Settings!</Text>
+      <Wormhole
+        source={{ uri: "http://192.168.1.5:3000/component/MyTable.jsx" }}
+      />
     </View>
   );
 }
