@@ -15,7 +15,7 @@ const MyWatchList = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalData, setModalData] = useState({});
   useEffect(() => {
-    fetch("http://localhost:8000/symbolData")
+    fetch("http://192.168.1.5:8000/symbolData")
       .then((response) => response.json())
       .then((data) => {
         setTableData(data);

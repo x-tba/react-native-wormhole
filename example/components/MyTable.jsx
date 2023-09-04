@@ -9,11 +9,6 @@ import {
 import React, { useEffect, useState } from "react";
 
 export default function MyTable({ dataFromFE, stylesFromFE }) {
-  console.log(
-    "🚀 ~ file: MyTable.tsx:13 ~ MyTable ~ dataFromFE, stylesFromFE:",
-    dataFromFE,
-    stylesFromFE
-  );
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 

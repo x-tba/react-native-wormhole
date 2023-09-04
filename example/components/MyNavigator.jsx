@@ -36,23 +36,31 @@ const useComponentSize = () => {
 
 function HomeScreen() {
   const [size, onLayout] = useComponentSize();
-  console.log(
-    "🚀 ~ file: MyNavigator.jsx:39 ~ HomeScreen ~ size, onLayout:",
-    size,
-    onLayout
-  );
+  console.log("🚀 ~ file: MyNavigator.jsx:39 ~ HomeScreen ~ size:", size);
 
   return (
     <View
       onLayout={onLayout}
-      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 2,
+      }}
     >
-      <Text onLayout={onLayout}>Home!</Text>
+      <Text onLayout={onLayout} style={{ borderWidth: 2 }}>
+        Home!
+      </Text>
       <View
         onLayout={onLayout}
-        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          borderWidth: 2,
+        }}
       >
-        <Text onLayout={onLayout}>
+        <Text onLayout={onLayout} style={{ borderWidth: 2 }}>
           Home 2 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           Commodi rerum quasi excepturi consectetur, aliquid eveniet provident
           expedita magnam, dignissimos, repudiandae minima non error eligendi
